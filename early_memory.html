@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 · 어린 나와의 만남 | 미술치료 마음여행</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #FAF7F2;
+    --parchment: #F3EDE3;
+    --rose: #C97B6E;
+    --rose-light: #F2DDD9;
+    --rose-mid: #D9948A;
+    --sage-mid: #7A9A82;
+    --sage-light: #E8F0EA;
+    --brown: #6B4F3A;
+    --brown-light: #8B6B52;
+    --text: #3D2B1F;
+    --text-mid: #6B5544;
+    --text-light: #9B8070;
+    --border: rgba(107,79,58,0.15);
+  }
+  body { background: var(--cream); font-family: 'Noto Sans KR', sans-serif; color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  .cloud-deco { position: fixed; pointer-events: none; z-index: 0; opacity: 0.18; }
+  .container { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 0 20px 60px; }
+  .header { text-align: center; padding: 40px 0 24px; }
+  .logo-wrap { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; }
+  .logo-img { width: 32px; height: 32px; object-fit: contain; }
+  .logo-text { font-family: 'Noto Serif KR', serif; font-size: 13px; color: var(--text-light); letter-spacing: 0.05em; }
+  .day-badge { display: inline-block; background: var(--rose-light); color: var(--rose); font-size: 11px; font-weight: 500; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .title { font-family: 'Noto Serif KR', serif; font-size: 26px; font-weight: 600; color: var(--brown); line-height: 1.4; margin-bottom: 8px; }
+  .subtitle { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .greeting { background: var(--parchment); border-radius: 16px; padding: 22px 24px; font-size: 14px; color: var(--text-mid); line-height: 2; margin-bottom: 28px; border: 0.5px solid var(--border); font-family: 'Noto Serif KR', serif; font-weight: 300; text-align: center; }
+  .set-label { display: flex; align-items: center; gap: 10px; margin: 24px 0 12px; }
+  .set-line { flex: 1; height: 0.5px; background: var(--border); }
+  .set-title { font-size: 11px; font-weight: 500; color: var(--rose-mid); letter-spacing: 0.12em; white-space: nowrap; }
+  .form-card { background: white; border-radius: 18px; padding: 22px; margin-bottom: 12px; border: 0.5px solid var(--border); box-shadow: 0 2px 12px rgba(107,79,58,0.05); }
+  .q-number { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; color: var(--rose-mid); margin-bottom: 8px; }
+  .q-text { font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 400; color: var(--brown); line-height: 1.7; margin-bottom: 14px; }
+  .q-sub { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; font-family: 'Noto Serif KR', serif; }
+  .q-hint { font-size: 12px; color: var(--text-light); line-height: 1.6; margin-bottom: 12px; padding-left: 10px; border-left: 2px solid var(--rose-light); }
+  input[type="text"], textarea {
+    width: 100%; background: var(--cream); border: 0.5px solid var(--border);
+    border-radius: 10px; padding: 12px 14px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: var(--text);
+    resize: none; outline: none; transition: border-color 0.2s; -webkit-appearance: none;
+  }
+  input[type="text"]:focus, textarea:focus { border-color: var(--rose-mid); background: white; }
+  input[type="text"]::placeholder, textarea::placeholder { color: var(--text-light); font-size: 13px; }
+  .upload-area { border: 1.5px dashed var(--rose-light); border-radius: 14px; padding: 28px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--cream); }
+  .upload-area:hover { border-color: var(--rose-mid); background: var(--rose-light); }
+  .upload-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .upload-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .upload-sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+  input[type="file"] { display: none; }
+  .divider-inner { height: 0.5px; background: var(--border); margin: 16px 0; }
+  .submit-wrap { margin-top: 28px; text-align: center; }
+  .submit-btn { background: var(--brown); color: white; border: none; border-radius: 50px; padding: 14px 48px; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; letter-spacing: 0.05em; transition: all 0.2s; box-shadow: 0 4px 16px rgba(107,79,58,0.25); }
+  .submit-btn:hover { background: var(--brown-light); transform: translateY(-1px); }
+  .done-screen { display: none; text-align: center; padding: 60px 20px; }
+  .done-screen.show { display: block; }
+  .done-icon { font-size: 48px; margin-bottom: 20px; display: block; }
+  .done-title { font-family: 'Noto Serif KR', serif; font-size: 22px; color: var(--brown); margin-bottom: 12px; }
+  .done-text { font-size: 14px; color: var(--text-light); line-height: 1.9; }
+  .footer { text-align: center; padding: 20px 0 10px; font-size: 11px; color: var(--text-light); opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<svg class="cloud-deco" style="top:-10px;left:-30px;width:220px" viewBox="0 0 200 160">
+  <ellipse cx="80" cy="100" rx="70" ry="50" fill="#C97B6E"/>
+  <ellipse cx="130" cy="80" rx="55" ry="40" fill="#C97B6E"/>
+  <ellipse cx="50" cy="80" rx="45" ry="35" fill="#C97B6E"/>
+</svg>
+<svg class="cloud-deco" style="top:-5px;right:-20px;width:190px" viewBox="0 0 200 160">
+  <ellipse cx="100" cy="100" rx="65" ry="48" fill="#D9948A"/>
+  <ellipse cx="145" cy="75" rx="50" ry="38" fill="#D9948A"/>
+  <ellipse cx="55" cy="78" rx="48" ry="36" fill="#D9948A"/>
+</svg>
+<svg class="cloud-deco" style="bottom:40px;left:-10px;width:160px;opacity:0.1" viewBox="0 0 200 160">
+  <ellipse cx="90" cy="100" rx="68" ry="50" fill="#7A9A82"/>
+  <ellipse cx="140" cy="78" rx="52" ry="40" fill="#7A9A82"/>
+  <ellipse cx="45" cy="80" rx="46" ry="36" fill="#7A9A82"/>
+</svg>
+
+<div class="container">
+  <div class="header">
+    <div class="logo-wrap">
+      <img class="logo-img" src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/Flower.png" alt="심지 로고" onerror="this.style.display='none'">
+      <span class="logo-text">심리상담연구소 심지</span>
+    </div>
+    <div class="day-badge">DAY 1 · 2025. 5. 11</div>
+    <div class="title">어린 나와의 만남</div>
+    <div class="subtitle">초기기억 그리기 — 내 안의 강점 발견</div>
+  </div>
+
+  <div id="form-area">
+    <div class="greeting">
+      함께 마음여행을 떠날 수 있어서 감사했습니다.<br>
+      오늘의 마음 그림과 함께 잠시 더 머물며<br>
+      우리의 여행기록을 남기고자 합니다.
+    </div>
+
+    <!-- 별칭 -->
+    <div class="form-card">
+      <div class="q-number">참가자 별칭</div>
+      <input type="text" id="name" placeholder="별칭을 입력해주세요" />
+    </div>
+
+    <!-- 마음 그림 -->
+    <div class="form-card">
+      <div class="q-number">오늘의 마음 그림</div>
+      <div class="q-text">초기기억을 그린 그림을 올려주세요</div>
+      <label for="photo">
+        <div class="upload-area" id="upload-area">
+          <img src="https://raw.githubusercontent.com/simjimind/test-learning-style/main/image/005.png" style="width:36px;height:36px;object-fit:contain;display:block;margin:0 auto 8px;" alt="">
+          <div class="upload-text">사진을 탭하여 업로드</div>
+          
+        </div>
+      </label>
+      <input type="file" id="photo" accept="image/*">
+    </div>
+
+    <!-- 1세트: 기억의 장면 -->
+    <div class="set-label">
+      <div class="set-line"></div>
+      <div class="set-title">기억의 장면</div>
+      <div class="set-line"></div>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 01</div>
+      <div class="q-text">몇 살 때쯤의 기억인가요?</div>
+      <input type="text" id="q1" placeholder="기억이 잘 나지 않으면 '잘 모르겠다'고 적어도 좋아요" />
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 02</div>
+      <div class="q-text">어떤 일이 일어난 건지 짧게 기록해주세요</div>
+      <textarea id="q2" rows="3" placeholder="그 장면에서 무슨 일이 있었는지 간단히 적어주세요."></textarea>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 03</div>
+      <div class="q-text">기억 중에 가장 인상적인 장면과<br>그때 어린 나는 어떤 감정을 느꼈을까요?</div>
+      <textarea id="q3" rows="4" placeholder="가장 선명하게 남아있는 장면과 그 감정을 적어주세요."></textarea>
+    </div>
+
+    <!-- 2세트: 감정과 소원 -->
+    <div class="set-label">
+      <div class="set-line"></div>
+      <div class="set-title">감정과 소원</div>
+      <div class="set-line"></div>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 04</div>
+      <div class="q-text">이 그림 속의 어린 나는<br>세상을 어떻게 느끼고 있었을까요?</div>
+      <textarea id="q4" rows="3" placeholder="어린 내가 바라본 사람들과 세상은 어떻다고 생각했을까요?"></textarea>
+      <div class="divider-inner"></div>
+      <div class="q-sub">그런 감정을 지금의 나도 경험할 때가 있나요?</div>
+      <textarea id="q4b" rows="3" placeholder="지금의 나와 연결되는 부분이 있다면 적어주세요."></textarea>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 05</div>
+      <div class="q-text">어린 자아의 소원이 있다면<br>기억하고 싶어요</div>
+      <textarea id="q5" rows="3" placeholder="어린 자아가 원하고 바라는 것을 상상해보세요."></textarea>
+    </div>
+
+    <!-- 3세트: 강점 발견과 격려 -->
+    <div class="set-label">
+      <div class="set-line"></div>
+      <div class="set-title">강점 발견과 격려</div>
+      <div class="set-line"></div>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 06</div>
+      <div class="q-text">어린 시절의 내가 가지고 있었던<br>강점과 가능성을 발견해주세요</div>
+      <textarea id="q6" rows="4" placeholder="어릴 때부터 내게 있던 고유한 강점을 적어주세요."></textarea>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 07</div>
+      <div class="q-text">
+        오늘 만난 어린 시절의 나에게 건네는,<br>
+        또는 여행을 떠나는 나에게 전하는<br>
+        격려의 말을 남겨주세요
+      </div>
+      <textarea id="q7" rows="5" placeholder="우리의 만남이 용기가 되도록 격려의 글을 남겨주세요."></textarea>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="submit-btn" onclick="submitForm()">오늘의 여행기록 남기기</button>
+    </div>
+  </div>
+
+  <div class="done-screen" id="done-screen">
+    <span class="done-icon">🌿</span>
+    <div class="done-title">소중한 기록을 남겨주셨어요</div>
+    <div class="done-text">
+      오늘 어린 나와의 만남을<br>기억해주셔서 감사합니다.<br><br>
+      내일도 따뜻한 여행이 되기를 바랍니다.<br><br>
+      심리상담연구소 심지
+    </div>
+  </div>
+
+  <div class="footer">심리상담연구소 심지 · simjimind@gmail.com</div>
+</div>
+
+<script>
+  document.getElementById('photo').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const area = document.getElementById('upload-area');
+      area.innerHTML = `<span class="upload-icon">✅</span><div class="upload-text">${file.name}</div><div class="upload-sub">탭하면 다시 선택할 수 있어요</div>`;
+    }
+  });
+
+  function submitForm() {
+    const fields = ['name','q1','q2','q3','q4','q4b','q5','q6','q7'];
+    for (const id of fields) {
+      if (!document.getElementById(id).value.trim()) {
+        alert('모든 질문에 답해주세요.'); return;
+      }
+    }
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('done-screen').classList.add('show');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
