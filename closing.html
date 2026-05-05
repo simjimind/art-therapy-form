@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마무리 · 감사와 나눔 | 미술치료 마음여행</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #FAF7F2;
+    --parchment: #F3EDE3;
+    --green: #3D5C3A;
+    --green-light: #E2EDE3;
+    --green-mid: #7A9A82;
+    --brown: #6B4F3A;
+    --brown-light: #8B6B52;
+    --text: #3D2B1F;
+    --text-mid: #6B5544;
+    --text-light: #9B8070;
+    --border: rgba(107,79,58,0.15);
+  }
+  body { background: var(--cream); font-family: 'Noto Sans KR', sans-serif; color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  .cloud-deco { position: fixed; pointer-events: none; z-index: 0; opacity: 0.18; }
+  .container { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 0 20px 60px; }
+  .header { text-align: center; padding: 40px 0 24px; }
+  .logo-wrap { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; }
+  .logo-img { width: 32px; height: 32px; object-fit: contain; }
+  .logo-text { font-family: 'Noto Serif KR', serif; font-size: 13px; color: var(--text-light); letter-spacing: 0.05em; }
+  .day-badge { display: inline-block; background: var(--green-light); color: var(--green); font-size: 11px; font-weight: 500; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .title { font-family: 'Noto Serif KR', serif; font-size: 26px; font-weight: 600; color: var(--brown); line-height: 1.4; margin-bottom: 8px; }
+  .subtitle { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .greeting { background: var(--parchment); border-radius: 16px; padding: 22px 24px; font-size: 14px; color: var(--text-mid); line-height: 2; margin-bottom: 28px; border: 0.5px solid var(--border); font-family: 'Noto Serif KR', serif; font-weight: 300; text-align: center; }
+  .set-label { display: flex; align-items: center; gap: 10px; margin: 24px 0 12px; }
+  .set-line { flex: 1; height: 0.5px; background: var(--border); }
+  .set-title { font-size: 11px; font-weight: 500; color: var(--green-mid); letter-spacing: 0.12em; white-space: nowrap; }
+  .form-card { background: white; border-radius: 18px; padding: 22px; margin-bottom: 12px; border: 0.5px solid var(--border); box-shadow: 0 2px 12px rgba(107,79,58,0.05); }
+  .q-number { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; color: var(--green-mid); margin-bottom: 8px; }
+  .q-text { font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 400; color: var(--brown); line-height: 1.7; margin-bottom: 14px; }
+  input[type="text"], textarea {
+    width: 100%; background: var(--cream); border: 0.5px solid var(--border);
+    border-radius: 10px; padding: 12px 14px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: var(--text);
+    resize: none; outline: none; transition: border-color 0.2s; -webkit-appearance: none;
+  }
+  input[type="text"]:focus, textarea:focus { border-color: var(--green-mid); background: white; }
+  input[type="text"]::placeholder, textarea::placeholder { color: var(--text-light); font-size: 13px; }
+  .submit-wrap { margin-top: 28px; text-align: center; }
+  .submit-btn { background: var(--green); color: white; border: none; border-radius: 50px; padding: 14px 48px; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; letter-spacing: 0.05em; transition: all 0.2s; box-shadow: 0 4px 16px rgba(61,92,58,0.3); }
+  .submit-btn:hover { background: #4E7549; transform: translateY(-1px); }
+  .done-screen { display: none; text-align: center; padding: 60px 20px; }
+  .done-screen.show { display: block; }
+  .done-icon { font-size: 48px; margin-bottom: 20px; display: block; }
+  .done-title { font-family: 'Noto Serif KR', serif; font-size: 22px; color: var(--brown); margin-bottom: 12px; }
+  .done-text { font-size: 14px; color: var(--text-light); line-height: 1.9; }
+  .footer { text-align: center; padding: 20px 0 10px; font-size: 11px; color: var(--text-light); opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<svg class="cloud-deco" style="top:-10px;left:-30px;width:220px" viewBox="0 0 200 160">
+  <ellipse cx="80" cy="100" rx="70" ry="50" fill="#3D5C3A"/>
+  <ellipse cx="130" cy="80" rx="55" ry="40" fill="#3D5C3A"/>
+  <ellipse cx="50" cy="80" rx="45" ry="35" fill="#3D5C3A"/>
+</svg>
+<svg class="cloud-deco" style="top:-5px;right:-20px;width:190px" viewBox="0 0 200 160">
+  <ellipse cx="100" cy="100" rx="65" ry="48" fill="#7A9A82"/>
+  <ellipse cx="145" cy="75" rx="50" ry="38" fill="#7A9A82"/>
+  <ellipse cx="55" cy="78" rx="48" ry="36" fill="#7A9A82"/>
+</svg>
+<svg class="cloud-deco" style="bottom:40px;right:-10px;width:160px;opacity:0.1" viewBox="0 0 200 160">
+  <ellipse cx="90" cy="100" rx="68" ry="50" fill="#7A9A82"/>
+  <ellipse cx="140" cy="78" rx="52" ry="40" fill="#7A9A82"/>
+  <ellipse cx="45" cy="80" rx="46" ry="36" fill="#7A9A82"/>
+</svg>
+
+<div class="container">
+  <div class="header">
+    <div class="logo-wrap">
+      <img class="logo-img" src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/Flower.png" alt="심지 로고" onerror="this.style.display='none'">
+      <span class="logo-text">심리상담연구소 심지</span>
+    </div>
+    <div class="day-badge">마무리 · 감사와 나눔</div>
+    <div class="title">마음여행의 마지막 페이지</div>
+    <div class="subtitle">함께한 시간을 기억하며</div>
+  </div>
+
+  <div id="form-area">
+    <div class="greeting">
+      3일 동안 자신의 마음을 용기 있게 들여다봐 주셔서 감사합니다.<br>
+      그리고 서로의 여정을 함께 걸어주신<br>
+      모든 분들께도 깊이 감사드려요.<br><br>
+      짧지만 소중했던 이 마음여행의<br>
+      마지막 페이지를 함께 써주세요.
+    </div>
+
+    <!-- 별칭 -->
+    <div class="form-card">
+      <div class="q-number">참가자 별칭</div>
+      <input type="text" id="name" placeholder="별칭을 입력해주세요" />
+    </div>
+
+    <!-- 1세트: 감사 나눔 -->
+    <div class="set-label">
+      <div class="set-line"></div>
+      <div class="set-title">감사 나눔</div>
+      <div class="set-line"></div>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 01</div>
+      <div class="q-text">이 여행을 함께한 분들에게<br>전하고 싶은 감사나 고마움이 있다면 적어주세요</div>
+      <textarea id="q1" rows="6" placeholder="함께 걸어주어서 고마웠던 마음, 서로에게 전하고 싶은 따뜻한 말을 자유롭게 적어주세요."></textarea>
+    </div>
+
+    <!-- 2세트: 여행의 선물 -->
+    <div class="set-label">
+      <div class="set-line"></div>
+      <div class="set-title">여행의 선물</div>
+      <div class="set-line"></div>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">QUESTION 02</div>
+      <div class="q-text">미술치료를 통해 내 마음을 여행하면서<br>내가 받은 가장 소중한 선물은 무엇이었나요?</div>
+      <textarea id="q2" rows="6" placeholder="이 여행이 내게 남겨준 것, 새로 발견한 것, 앞으로 가져가고 싶은 것을 적어주세요."></textarea>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="submit-btn" onclick="submitForm()">마음여행의 마지막 페이지 남기기</button>
+    </div>
+  </div>
+
+  <div class="done-screen" id="done-screen">
+    <span class="done-icon">🌿</span>
+    <div class="done-title">함께해주셔서 감사합니다</div>
+    <div class="done-text">
+      3일간의 마음여행이<br>오래도록 따뜻하게<br>기억되기를 바랍니다.<br><br>
+      언제나 응원합니다.<br><br>
+      심리상담연구소 심지
+    </div>
+  </div>
+
+  <div class="footer">심리상담연구소 심지 · simjimind@gmail.com</div>
+</div>
+
+<script>
+  function submitForm() {
+    const fields = ['name','q1','q2'];
+    for (const id of fields) {
+      if (!document.getElementById(id).value.trim()) {
+        alert('모든 질문에 답해주세요.'); return;
+      }
+    }
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('done-screen').classList.add('show');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>

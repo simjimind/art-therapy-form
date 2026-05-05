@@ -3,18 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day 1 · 어린 나와의 만남 | 미술치료 마음여행</title>
+<title>Day 2 · 나의 풍경 속으로 | 미술치료 마음여행</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --cream: #FAF7F2;
     --parchment: #F3EDE3;
-    --rose: #C97B6E;
-    --rose-light: #F2DDD9;
-    --rose-mid: #D9948A;
-    --sage-mid: #7A9A82;
-    --sage-light: #E8F0EA;
+    --purple: #7A6B8A;
+    --purple-light: #EAE5F0;
+    --purple-mid: #9A88AA;
     --brown: #6B4F3A;
     --brown-light: #8B6B52;
     --text: #3D2B1F;
@@ -29,29 +27,30 @@
   .logo-wrap { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; }
   .logo-img { width: 32px; height: 32px; object-fit: contain; }
   .logo-text { font-family: 'Noto Serif KR', serif; font-size: 13px; color: var(--text-light); letter-spacing: 0.05em; }
-  .day-badge { display: inline-block; background: var(--rose-light); color: var(--rose); font-size: 11px; font-weight: 500; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .day-badge { display: inline-block; background: var(--purple-light); color: var(--purple); font-size: 11px; font-weight: 500; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.1em; margin-bottom: 12px; }
   .title { font-family: 'Noto Serif KR', serif; font-size: 26px; font-weight: 600; color: var(--brown); line-height: 1.4; margin-bottom: 8px; }
   .subtitle { font-size: 13px; color: var(--text-light); line-height: 1.7; }
   .greeting { background: var(--parchment); border-radius: 16px; padding: 22px 24px; font-size: 14px; color: var(--text-mid); line-height: 2; margin-bottom: 28px; border: 0.5px solid var(--border); font-family: 'Noto Serif KR', serif; font-weight: 300; text-align: center; }
   .set-label { display: flex; align-items: center; gap: 10px; margin: 24px 0 12px; }
   .set-line { flex: 1; height: 0.5px; background: var(--border); }
-  .set-title { font-size: 11px; font-weight: 500; color: var(--rose-mid); letter-spacing: 0.12em; white-space: nowrap; }
+  .set-title { font-size: 11px; font-weight: 500; color: var(--purple-mid); letter-spacing: 0.12em; white-space: nowrap; }
   .form-card { background: white; border-radius: 18px; padding: 22px; margin-bottom: 12px; border: 0.5px solid var(--border); box-shadow: 0 2px 12px rgba(107,79,58,0.05); }
-  .q-number { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; color: var(--rose-mid); margin-bottom: 8px; }
+  .q-number { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; color: var(--purple-mid); margin-bottom: 8px; }
   .q-text { font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 400; color: var(--brown); line-height: 1.7; margin-bottom: 14px; }
   .q-sub { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; font-family: 'Noto Serif KR', serif; }
-  .q-hint { font-size: 12px; color: var(--text-light); line-height: 1.6; margin-bottom: 12px; padding-left: 10px; border-left: 2px solid var(--rose-light); }
+  .mini-label { font-family: 'Noto Serif KR', serif; font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 6px; }
+  .mini-q { margin-bottom: 14px; }
+  .mini-q:last-child { margin-bottom: 0; }
   input[type="text"], textarea {
     width: 100%; background: var(--cream); border: 0.5px solid var(--border);
     border-radius: 10px; padding: 12px 14px;
     font-family: 'Noto Sans KR', sans-serif; font-size: 14px; color: var(--text);
     resize: none; outline: none; transition: border-color 0.2s; -webkit-appearance: none;
   }
-  input[type="text"]:focus, textarea:focus { border-color: var(--rose-mid); background: white; }
+  input[type="text"]:focus, textarea:focus { border-color: var(--purple-mid); background: white; }
   input[type="text"]::placeholder, textarea::placeholder { color: var(--text-light); font-size: 13px; }
-  .upload-area { border: 1.5px dashed var(--rose-light); border-radius: 14px; padding: 28px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--cream); }
-  .upload-area:hover { border-color: var(--rose-mid); background: var(--rose-light); }
-  .upload-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .upload-area { border: 1.5px dashed var(--purple-light); border-radius: 14px; padding: 28px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--cream); }
+  .upload-area:hover { border-color: var(--purple-mid); background: var(--purple-light); }
   .upload-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
   .upload-sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
   input[type="file"] { display: none; }
@@ -70,14 +69,14 @@
 <body>
 
 <svg class="cloud-deco" style="top:-10px;left:-30px;width:220px" viewBox="0 0 200 160">
-  <ellipse cx="80" cy="100" rx="70" ry="50" fill="#C97B6E"/>
-  <ellipse cx="130" cy="80" rx="55" ry="40" fill="#C97B6E"/>
-  <ellipse cx="50" cy="80" rx="45" ry="35" fill="#C97B6E"/>
+  <ellipse cx="80" cy="100" rx="70" ry="50" fill="#7A6B8A"/>
+  <ellipse cx="130" cy="80" rx="55" ry="40" fill="#7A6B8A"/>
+  <ellipse cx="50" cy="80" rx="45" ry="35" fill="#7A6B8A"/>
 </svg>
 <svg class="cloud-deco" style="top:-5px;right:-20px;width:190px" viewBox="0 0 200 160">
-  <ellipse cx="100" cy="100" rx="65" ry="48" fill="#D9948A"/>
-  <ellipse cx="145" cy="75" rx="50" ry="38" fill="#D9948A"/>
-  <ellipse cx="55" cy="78" rx="48" ry="36" fill="#D9948A"/>
+  <ellipse cx="100" cy="100" rx="65" ry="48" fill="#9A88AA"/>
+  <ellipse cx="145" cy="75" rx="50" ry="38" fill="#9A88AA"/>
+  <ellipse cx="55" cy="78" rx="48" ry="36" fill="#9A88AA"/>
 </svg>
 <svg class="cloud-deco" style="bottom:40px;left:-10px;width:160px;opacity:0.1" viewBox="0 0 200 160">
   <ellipse cx="90" cy="100" rx="68" ry="50" fill="#7A9A82"/>
@@ -91,14 +90,13 @@
       <img class="logo-img" src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/Flower.png" alt="심지 로고" onerror="this.style.display='none'">
       <span class="logo-text">심리상담연구소 심지</span>
     </div>
-    <div class="day-badge">DAY 1 · 2025. 5. 11</div>
-    <div class="title">어린 나와의 만남</div>
-    <div class="subtitle">초기기억 그리기 — 내 안의 강점 발견</div>
+    <div class="day-badge">DAY 2 · 2025. 5. 12</div>
+    <div class="title">나의 풍경 속으로</div>
+    <div class="subtitle">LMT 풍경구성법 — 내 삶의 바람과 접촉</div>
   </div>
 
   <div id="form-area">
     <div class="greeting">
-      함께 마음여행을 떠날 수 있어서 감사했습니다.<br>
       오늘의 마음 그림과 함께 잠시 더 머물며<br>
       우리의 여행기록을 남기고자 합니다.
     </div>
@@ -112,85 +110,103 @@
     <!-- 마음 그림 -->
     <div class="form-card">
       <div class="q-number">오늘의 마음 그림</div>
-      <div class="q-text">초기기억을 그린 그림을 올려주세요</div>
+      <div class="q-text">LMT 풍경 그림을 올려주세요</div>
       <label for="photo">
         <div class="upload-area" id="upload-area">
           <img src="https://raw.githubusercontent.com/simjimind/test-learning-style/main/image/005.png" style="width:36px;height:36px;object-fit:contain;display:block;margin:0 auto 8px;" alt="">
           <div class="upload-text">사진을 탭하여 업로드</div>
-          
         </div>
       </label>
       <input type="file" id="photo" accept="image/*">
     </div>
 
-    <!-- 1세트: 기억의 장면 -->
+    <!-- 세트: 나의 풍경 -->
     <div class="set-label">
       <div class="set-line"></div>
-      <div class="set-title">기억의 장면</div>
+      <div class="set-title">나의 풍경</div>
+      <div class="set-line"></div>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">LANDSCAPE 01</div>
+      <div class="q-text">나의 풍경에 제목과 한 줄의 설명을 적어주세요</div>
+      <div class="mini-q">
+        <div class="mini-label">제목</div>
+        <input type="text" id="ls_title" placeholder="풍경의 제목을 지어주세요" />
+      </div>
+      <div class="mini-q">
+        <div class="mini-label">한 줄 설명</div>
+        <input type="text" id="ls_desc" placeholder="이 풍경을 한 문장으로 표현한다면?" />
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">LANDSCAPE 02</div>
+      <div class="q-text">풍경의 계절은 언제인가요?</div>
+      <input type="text" id="ls_season" placeholder="봄, 여름, 가을, 겨울... 또는 계절이 섞여있나요?" />
+      <div class="divider-inner"></div>
+      <div class="q-sub">풍경 속의 시간은 몇 시인가요? 날씨는 어떻습니까?</div>
+      <input type="text" id="ls_time" placeholder="예) 오후 3시, 맑음 / 새벽, 안개가 자욱한..." />
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">LANDSCAPE 03</div>
+      <div class="q-text">산 너머에는 뭐가 있을까요?</div>
+      <textarea id="ls_beyond" rows="2" placeholder="산 너머 세상을 상상해보세요."></textarea>
+      <div class="divider-inner"></div>
+      <div class="q-sub">사람은 무엇을 하고 있나요?</div>
+      <textarea id="ls_person" rows="2" placeholder="풍경 속 사람의 모습을 묘사해주세요."></textarea>
+      <div class="divider-inner"></div>
+      <div class="q-sub">길을 따라가다 보면 어디로 가게 되나요?</div>
+      <textarea id="ls_road" rows="2" placeholder="그 길의 끝은 어디일까요?"></textarea>
+    </div>
+
+    <div class="form-card">
+      <div class="q-number">LANDSCAPE 04</div>
+      <div class="q-text">내가 추가로 그렸거나,<br>여의치 않아 그리지 못했지만<br>그리고 싶었던 것이 있나요?</div>
+      <textarea id="ls_wish" rows="3" placeholder="그리고 싶었던 것, 더 넣고 싶었던 요소가 있다면 적어주세요."></textarea>
+    </div>
+
+    <!-- 세트: 풍경 안의 나 -->
+    <div class="set-label">
+      <div class="set-line"></div>
+      <div class="set-title">풍경 안의 나</div>
       <div class="set-line"></div>
     </div>
 
     <div class="form-card">
       <div class="q-number">QUESTION 01</div>
-      <div class="q-text">몇 살 때쯤의 기억인가요?</div>
-      <input type="text" id="q1" placeholder="기억이 잘 나지 않으면 '잘 모르겠다'고 적어도 좋아요" />
+      <div class="q-text">풍경 안에서 가장 마음이 가는 부분은 어디였나요?<br>그것이 내게 어떤 생각을 하게 했나요?</div>
+      <textarea id="q1" rows="5" placeholder="그림을 그리고 돌아보는 과정에서 떠오른 생각을 자유롭게 적어주세요."></textarea>
     </div>
 
     <div class="form-card">
       <div class="q-number">QUESTION 02</div>
-      <div class="q-text">어떤 일이 일어난 건지 짧게 기록해주세요</div>
-      <textarea id="q2" rows="3" placeholder="그 장면에서 무슨 일이 있었는지 간단히 적어주세요."></textarea>
+      <div class="q-text">내가 그린 풍경 안에서<br>나와 관련된 기억이 있다면 어떤 것이었을까요?</div>
+      <textarea id="q2" rows="4" placeholder="과거와 현재, 또는 미래의 내 기억 속 어느 지점과 닿아있는 지점이 있다면 적어주세요."></textarea>
+      <div class="divider-inner"></div>
+      <div class="q-sub">그 기억이 나에게 어떤 감정을 느끼게 하나요?</div>
+      <textarea id="q2b" rows="3" placeholder="편안함, 외로움, 설렘... 어떤 감정이 느껴지나요?"></textarea>
+    </div>
+
+    <!-- 세트: 삶의 의미 -->
+    <div class="set-label">
+      <div class="set-line"></div>
+      <div class="set-title">삶의 의미</div>
+      <div class="set-line"></div>
     </div>
 
     <div class="form-card">
       <div class="q-number">QUESTION 03</div>
-      <div class="q-text">기억 중에 가장 인상적인 장면과<br>그때 어린 나는 어떤 감정을 느꼈을까요?</div>
-      <textarea id="q3" rows="4" placeholder="가장 선명하게 남아있는 장면과 그 감정을 적어주세요."></textarea>
-    </div>
-
-    <!-- 2세트: 감정과 소원 -->
-    <div class="set-label">
-      <div class="set-line"></div>
-      <div class="set-title">감정과 소원</div>
-      <div class="set-line"></div>
-    </div>
-
-    <div class="form-card">
-      <div class="q-number">QUESTION 04</div>
-      <div class="q-text">이 그림 속의 어린 나는<br>세상을 어떻게 느끼고 있었을까요?</div>
-      <textarea id="q4" rows="3" placeholder="어린 내가 바라본 사람들과 세상은 어떻다고 생각했을까요?"></textarea>
+      <div class="q-text">이 풍경 그림이 나에게<br>전하고픈 메시지가 있다면 무엇일까요?</div>
+      <textarea id="q3" rows="4" placeholder="풍경이 나에게 말을 건다면, 어떤 말을 해줄 것 같나요?"></textarea>
       <div class="divider-inner"></div>
-      <div class="q-sub">그런 감정을 지금의 나도 경험할 때가 있나요?</div>
-      <textarea id="q4b" rows="3" placeholder="지금의 나와 연결되는 부분이 있다면 적어주세요."></textarea>
+      <div class="q-sub">지금의 생활 속에서 작은 변화를 줄 수 있다면 어떤 것이 가능할까요?</div>
+      <textarea id="q3b" rows="4" placeholder="풍경에서 발견한 것을 일상으로 가져온다면, 어떤 작은 변화를 시도해볼 수 있을까요?"></textarea>
     </div>
 
-    <div class="form-card">
-      <div class="q-number">QUESTION 05</div>
-      <div class="q-text">어린 자아의 소원이 있다면<br>기억하고 싶어요</div>
-      <textarea id="q5" rows="3" placeholder="어린 자아가 원하고 바라는 것을 상상해보세요."></textarea>
-    </div>
-
-    <!-- 3세트: 강점 발견과 격려 -->
-    <div class="set-label">
-      <div class="set-line"></div>
-      <div class="set-title">강점 발견과 격려</div>
-      <div class="set-line"></div>
-    </div>
-
-    <div class="form-card">
-      <div class="q-number">QUESTION 06</div>
-      <div class="q-text">어린 시절의 내가 가지고 있었던<br>강점과 가능성을 발견해주세요</div>
-      <textarea id="q6" rows="4" placeholder="어릴 때부터 내게 있던 고유한 강점을 적어주세요."></textarea>
-    </div>
-
-    <div class="form-card">
-      <div class="q-number">QUESTION 07</div>
-      <div class="q-text">
-        오늘 만난 어린 시절의 나에게 건네는,<br>
-        또는 여행을 떠나는 나에게 전하는<br>
-        격려의 말을 남겨주세요
-      </div>
-      <textarea id="q7" rows="5" placeholder="우리의 만남이 용기가 되도록 격려의 글을 남겨주세요."></textarea>
+    <div style="text-align:center; font-family:'Noto Serif KR',serif; font-size:14px; color:var(--text-mid); line-height:2; padding: 16px 0 4px;">
+      오늘도 마음여정에 함께 해주셔서 감사드립니다.
     </div>
 
     <div class="submit-wrap">
@@ -202,8 +218,8 @@
     <span class="done-icon">🌿</span>
     <div class="done-title">소중한 기록을 남겨주셨어요</div>
     <div class="done-text">
-      오늘 어린 나와의 만남을<br>기억해주셔서 감사합니다.<br><br>
-      내일도 따뜻한 여행이 되기를 바랍니다.<br><br>
+      오늘 나의 풍경 안을 거닐어주셔서<br>감사합니다.<br><br>
+      내일 마지막 여행도 함께해요.<br><br>
       심리상담연구소 심지
     </div>
   </div>
@@ -216,7 +232,7 @@
     const file = e.target.files[0];
     if (file) {
       const area = document.getElementById('upload-area');
-      area.innerHTML = `<span class="upload-icon">✅</span><div class="upload-text">${file.name}</div><div class="upload-sub">탭하면 다시 선택할 수 있어요</div>`;
+      area.innerHTML = `<span style="font-size:26px;display:block;margin-bottom:8px;">✅</span><div class="upload-text">${file.name}</div><div class="upload-sub">탭하면 다시 선택할 수 있어요</div>`;
     }
   });
 
@@ -237,7 +253,12 @@
   }
 
   async function submitForm() {
-    const fields = ['name','q1','q2','q3','q4','q4b','q5','q6','q7'];
+    const fields = [
+      'name',
+      'ls_title','ls_desc','ls_season','ls_time',
+      'ls_beyond','ls_person','ls_road','ls_wish',
+      'q1','q2','q2b','q3','q3b'
+    ];
     for (const id of fields) {
       if (!getVal(id)) { alert('모든 질문에 답해주세요.'); return; }
     }
@@ -250,13 +271,16 @@
     const photoBase64 = await fileToBase64(photoFile);
 
     const payload = {
-      formType: 'early_memory',
+      formType: 'lmt',
       name: getVal('name'),
       photo: photoBase64,
-      q1: getVal('q1'), q2: getVal('q2'), q3: getVal('q3'),
-      q4: getVal('q4'), q4b: getVal('q4b'),
-      q5: getVal('q5'),
-      q6: getVal('q6'), q7: getVal('q7')
+      ls_title: getVal('ls_title'), ls_desc: getVal('ls_desc'),
+      ls_season: getVal('ls_season'), ls_time: getVal('ls_time'),
+      ls_beyond: getVal('ls_beyond'), ls_person: getVal('ls_person'), ls_road: getVal('ls_road'),
+      ls_wish: getVal('ls_wish'),
+      q1: getVal('q1'),
+      q2: getVal('q2'), q2b: getVal('q2b'),
+      q3: getVal('q3'), q3b: getVal('q3b')
     };
 
     try {
