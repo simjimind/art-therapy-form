@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미술치료를 통한 마음여행 | 심리상담연구소 심지</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #3E5C3A;
+    --green-sage: #ACCFAC;
+    --green-light: #e8f0e8;
+    --cream: #FAF7F2;
+    --parchment: #F3EDE3;
+    --warm-gray: #8a8078;
+    --text-dark: #2c2c2c;
+    --text-body: #4a4540;
+    --border: #d8cfc4;
+    --brown: #6B4F3A;
+    --brown-light: #8B6B52;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text-body);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 48px 16px 80px;
+  }
+
+  /* 구름 장식 */
+  .cloud {
+    position: fixed;
+    opacity: 0.13;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .cloud-tl { top: -30px; left: -40px; }
+  .cloud-br { bottom: -20px; right: -30px; transform: scaleX(-1); }
+
+  .letter-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 헤더 */
+  .letter-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo-mark {
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 14px;
+  }
+
+  .logo-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .institute-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--warm-gray);
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  .form-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--green-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .form-subtitle {
+    font-size: 13px;
+    color: var(--warm-gray);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+  }
+
+  /* 레터 바디 */
+  .letter-body {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 48px 52px;
+    box-shadow: 0 2px 20px rgba(62,92,58,0.06);
+  }
+
+  /* 프로그램 정보 카드 */
+  .program-card {
+    background: var(--parchment);
+    border-radius: 4px;
+    padding: 32px 36px;
+    margin-bottom: 36px;
+    border: 1px solid var(--border);
+  }
+
+  .program-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--green-deep);
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .info-table tr {
+    border-bottom: 1px solid rgba(107,79,58,0.1);
+  }
+
+  .info-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .info-table th {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--green-deep);
+    padding: 12px 0 12px 0;
+    text-align: left;
+    width: 72px;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  .info-table td {
+    font-size: 13.5px;
+    color: var(--text-body);
+    padding: 12px 0 12px 16px;
+    line-height: 1.8;
+    vertical-align: top;
+  }
+
+  /* 준비물 섹션 */
+  .supplies-section {
+    margin-bottom: 32px;
+    padding: 28px 32px;
+    background: var(--green-light);
+    border-radius: 4px;
+    border: 1px solid rgba(172, 207, 172, 0.4);
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    background: var(--green-sage);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .supply-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .supply-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 13.5px;
+    color: var(--text-body);
+  }
+
+  .supply-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .supply-note {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.9;
+    padding-left: 14px;
+    word-break: keep-all;
+  }
+
+  /* Zoom 안내 섹션 */
+  .zoom-section {
+    margin-bottom: 32px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .zoom-header {
+    background: var(--green-deep);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .zoom-header-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 0.05em;
+  }
+
+  .zoom-body {
+    padding: 28px 32px;
+    background: white;
+  }
+
+  .zoom-notice {
+    font-size: 13.5px;
+    color: var(--text-body);
+    line-height: 2;
+    margin-bottom: 24px;
+    word-break: keep-all;
+    padding: 16px 20px;
+    background: #fff8f0;
+    border-left: 3px solid #e8a87c;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .zoom-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .zoom-info-item {
+    background: var(--parchment);
+    border-radius: 4px;
+    padding: 14px 18px;
+  }
+
+  .zoom-info-label {
+    font-size: 11px;
+    color: var(--warm-gray);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .zoom-info-value {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    color: var(--green-deep);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .zoom-link-box {
+    background: var(--parchment);
+    border-radius: 4px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .zoom-link-box a {
+    font-size: 12.5px;
+    color: var(--green-deep);
+    text-decoration: none;
+    word-break: break-all;
+    flex: 1;
+  }
+
+  .copy-btn {
+    background: var(--green-deep);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .copy-btn:hover { background: #2d4329; }
+  .copy-btn.copied { background: #7a9a82; }
+
+  /* 구분선 */
+  .divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 32px 0;
+  }
+
+  /* 참가동기 폼 */
+  .motivation-section {
+    margin-bottom: 8px;
+  }
+
+  .motivation-intro {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 2;
+    color: var(--text-body);
+    text-align: center;
+    padding: 24px 20px;
+    background: var(--parchment);
+    border-radius: 4px;
+    margin-bottom: 28px;
+    word-break: keep-all;
+  }
+
+  /* 입력 필드 공통 */
+  .field-group {
+    margin-bottom: 24px;
+  }
+
+  .field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green-deep);
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  .field-label .required {
+    color: #c0392b;
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  .field-hint {
+    font-size: 12px;
+    color: var(--warm-gray);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-dark);
+    background: white;
+    transition: border-color 0.2s;
+    outline: none;
+    resize: vertical;
+  }
+
+  input[type="text"]:focus,
+  textarea:focus {
+    border-color: var(--green-sage);
+  }
+
+  input[type="text"]::placeholder,
+  textarea::placeholder {
+    color: #c5bdb5;
+  }
+
+  textarea {
+    line-height: 1.9;
+  }
+
+  /* 제출 버튼 */
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--green-deep);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
+  }
+
+  .submit-btn:hover { background: #2d4329; }
+  .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled {
+    background: #b0b8ae;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* 에러 */
+  .error-msg {
+    display: none;
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .error-msg.show { display: block; }
+
+  /* 완료 화면 */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .success-msg.show { display: block; }
+
+  .success-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .success-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    color: var(--green-deep);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .success-body {
+    font-size: 13.5px;
+    color: var(--warm-gray);
+    line-height: 2;
+    word-break: keep-all;
+  }
+
+  /* 푸터 */
+  .letter-footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 12px;
+    color: #c5bdb5;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 600px) {
+    .letter-body { padding: 32px 24px; }
+    .program-card { padding: 24px 20px; }
+    .zoom-info-grid { grid-template-columns: 1fr; }
+    .supplies-section { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 구름 장식 -->
+<svg class="cloud cloud-tl" width="260" height="160" viewBox="0 0 260 160">
+  <ellipse cx="90" cy="100" rx="90" ry="60" fill="#ACCFAC"/>
+  <ellipse cx="160" cy="80" rx="70" ry="50" fill="#ACCFAC"/>
+  <ellipse cx="210" cy="110" rx="55" ry="40" fill="#ACCFAC"/>
+</svg>
+<svg class="cloud cloud-br" width="220" height="140" viewBox="0 0 220 140">
+  <ellipse cx="80" cy="90" rx="80" ry="55" fill="#ACCFAC"/>
+  <ellipse cx="150" cy="70" rx="60" ry="45" fill="#ACCFAC"/>
+  <ellipse cx="190" cy="100" rx="45" ry="35" fill="#ACCFAC"/>
+</svg>
+
+<div class="letter-wrap">
+
+  <!-- 헤더 -->
+  <div class="letter-header">
+    <div class="logo-mark">
+      <img src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/Flower.png" alt="심지 로고">
+    </div>
+    <p class="institute-name">심리상담연구소 심지</p>
+    <h1 class="form-title">미술치료를 통한 마음여행</h1>
+    <p class="form-subtitle">프로그램 안내 · 참가 준비</p>
+  </div>
+
+  <div class="letter-body">
+
+    <!-- 프로그램 정보 -->
+    <div class="program-card">
+      <p class="program-card-title">Art Therapy Mind Journey</p>
+      <table class="info-table">
+        <tr>
+          <th>일 시</th>
+          <td>2026년 5월 11일(월) · 12일(화) · 13일(수)<br>매회 오후 7시 30분 (2시간)</td>
+        </tr>
+        <tr>
+          <th>방 식</th>
+          <td>온라인 비대면 · ZOOM 집단상담</td>
+        </tr>
+        <tr>
+          <th>대 상</th>
+          <td>미술치료를 통해 자신을 이해하고 싶어하는 대학생 8명</td>
+        </tr>
+        <tr>
+          <th>강 사</th>
+          <td>심리상담사 김이수 (아들러 전문상담가 1급)</td>
+        </tr>
+        <tr>
+          <th>회기별</th>
+          <td>
+            Day 1 · 초기기억 그리기 — 어린 자아의 강점 발견<br>
+            Day 2 · 풍경구성법(LMT) — 나의 삶의 의미 찾기<br>
+            Day 3 · 숲속을 여행하는 아이 — 스트레스 대처법
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 준비물 -->
+    <div class="supplies-section">
+      <div class="section-title">준비물 안내</div>
+      <ul class="supply-list">
+        <li class="supply-item">
+          <svg class="supply-icon" viewBox="0 0 18 18" fill="none">
+            <rect x="2" y="1" width="14" height="16" rx="1.5" stroke="#3E5C3A" stroke-width="1.2"/>
+            <line x1="5" y1="6" x2="13" y2="6" stroke="#3E5C3A" stroke-width="1"/>
+            <line x1="5" y1="9" x2="11" y2="9" stroke="#3E5C3A" stroke-width="1"/>
+          </svg>
+          A4 용지 (여러 장)
+        </li>
+        <li class="supply-item">
+          <svg class="supply-icon" viewBox="0 0 18 18" fill="none">
+            <rect x="7" y="1" width="4" height="13" rx="2" stroke="#3E5C3A" stroke-width="1.2"/>
+            <ellipse cx="9" cy="15.5" rx="2" ry="1" fill="#3E5C3A" opacity="0.4"/>
+          </svg>
+          색연필
+        </li>
+        <li class="supply-item">
+          <svg class="supply-icon" viewBox="0 0 18 18" fill="none">
+            <rect x="7.5" y="1" width="3" height="12" rx="1.5" stroke="#3E5C3A" stroke-width="1.2"/>
+            <rect x="6" y="12" width="6" height="3" rx="1" fill="#3E5C3A" opacity="0.3"/>
+          </svg>
+          싸인펜
+        </li>
+        <li class="supply-item">
+          <svg class="supply-icon" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2L10.5 14H7.5L9 2Z" stroke="#3E5C3A" stroke-width="1.2" stroke-linejoin="round"/>
+            <ellipse cx="9" cy="15.5" rx="1.5" ry="0.8" fill="#3E5C3A" opacity="0.4"/>
+          </svg>
+          볼펜
+        </li>
+        <li class="supply-item">
+          <svg class="supply-icon" viewBox="0 0 18 18" fill="none">
+            <rect x="2" y="4" width="14" height="10" rx="2" stroke="#3E5C3A" stroke-width="1.2"/>
+            <circle cx="9" cy="9" r="2.5" stroke="#3E5C3A" stroke-width="1"/>
+          </svg>
+          스마트폰 (사진 촬영용)
+        </li>
+      </ul>
+      <p class="supply-note">
+        ※ 매 회기 종료 후 스마트폰으로 작품 사진을 찍어 제출하게 됩니다.<br>
+        &nbsp;&nbsp;&nbsp;작품 촬영과 응답 제출은 스마트폰으로 하시고,<br>
+        &nbsp;&nbsp;&nbsp;<strong style="color:var(--green-deep);">ZOOM 접속은 가능하면 태블릿(iPad · Galaxy Tab 등) · 노트북 · 데스크탑을 이용</strong>해 주세요.<br>
+        &nbsp;&nbsp;&nbsp;화면이 넓을수록 미술치료 자료를 더 편안하게 함께 볼 수 있습니다.
+      </p>
+    </div>
+
+    <!-- ZOOM 안내 -->
+    <div class="zoom-section">
+      <div class="zoom-header">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="1" y="4" width="11" height="10" rx="2" fill="white" opacity="0.9"/>
+          <path d="M12 7L17 4V14L12 11V7Z" fill="white" opacity="0.7"/>
+        </svg>
+        <span class="zoom-header-text">ZOOM 접속 안내</span>
+      </div>
+      <div class="zoom-body">
+
+        <div class="zoom-info-grid">
+          <div class="zoom-info-item">
+            <div class="zoom-info-label">Meeting ID</div>
+            <div class="zoom-info-value">424 279 7942</div>
+          </div>
+          <div class="zoom-info-item">
+            <div class="zoom-info-label">Password</div>
+            <div class="zoom-info-value">123456</div>
+          </div>
+        </div>
+        <div class="zoom-link-box">
+          <a href="https://us02web.zoom.us/j/4242797942?pwd=b29NeisvUHFWU090ekhBQTZkMkVzQT09" target="_blank">
+            ZOOM 입장 링크 바로가기 →
+          </a>
+          <button class="copy-btn" onclick="copyZoomLink(this)">링크 복사</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 참가동기 입력 -->
+    <div class="motivation-section" id="formArea">
+      <div class="motivation-intro">
+        프로그램을 시작하기 전,<br>
+        당신의 마음을 잠시 들여다봐 주세요.<br><br>
+        여기서 나눠주신 이야기는<br>
+        여정이 끝난 후 드리는 <strong style="color:var(--green-deep);">개인 결과지</strong>에 소중히 담겨<br>
+        다시 만날 수 있도록 기록됩니다.
+      </div>
+
+      <!-- 성명 -->
+      <div class="field-group">
+        <label class="field-label" for="realname">
+          성명 <span class="required">*</span>
+        </label>
+        <input type="text" id="realname" placeholder="실명을 입력해주세요">
+      </div>
+
+      <!-- 별칭 -->
+      <div class="field-group">
+        <label class="field-label" for="nickname">
+          별칭 <span class="required">*</span>
+        </label>
+        <span class="field-hint">3일 내내 사용할 별칭을 정해주세요. (예: 새벽별, 봄비, 하늘이)</span>
+        <input type="text" id="nickname" placeholder="나만의 별칭을 입력해주세요">
+      </div>
+
+      <!-- 참가 동기 -->
+      <div class="field-group">
+        <label class="field-label" for="motivation">
+          이 프로그램에 참가하게 된 동기 <span class="required">*</span>
+        </label>
+        <span class="field-hint">자유롭게, 떠오르는 대로 적어주세요.</span>
+        <textarea id="motivation" rows="5"
+          placeholder="미술치료를 통해 어떤 것을 경험하고 싶으신가요? 지금 어떤 마음으로 이 여행을 시작하게 되었나요?"></textarea>
+      </div>
+
+      <!-- 제출 버튼 -->
+      <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+        마음여행을 시작합니다
+      </button>
+      <p class="error-msg" id="errorMsg">성명, 별칭, 참가 동기를 모두 입력해 주세요.</p>
+    </div>
+
+    <!-- 완료 화면 -->
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">🌿</div>
+      <p class="success-title">준비가 되셨군요</p>
+      <p class="success-body">
+        소중한 마음을 나눠주셔서 감사합니다.<br>
+        5월 11일 저녁 7시 30분, ZOOM에서 만나요.<br><br>
+        준비물(A4용지, 색연필, 싸인펜, 볼펜)과<br>
+        편안한 마음으로 함께해 주세요 🌱
+      </p>
+    </div>
+
+  </div>
+
+  <p class="letter-footer">심리상담연구소 심지 · simjimind@gmail.com</p>
+
+</div>
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydRdtzEmS1B_25a3B8guOyrS-U4sawfvCcjAman9yugLL-bxP_9B5NCW8e5T9xJky1kA/exec';
+
+  function copyZoomLink(btn) {
+    const url = 'https://us02web.zoom.us/j/4242797942?pwd=b29NeisvUHFWU090ekhBQTZkMkVzQT09';
+    navigator.clipboard.writeText(url).then(() => {
+      btn.textContent = '복사됨 ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '링크 복사';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  async function submitForm() {
+    const realname   = document.getElementById('realname').value.trim();
+    const nickname   = document.getElementById('nickname').value.trim();
+    const motivation = document.getElementById('motivation').value.trim();
+    const errorEl    = document.getElementById('errorMsg');
+
+    if (!realname || !nickname || !motivation) {
+      errorEl.classList.add('show');
+      return;
+    }
+    errorEl.classList.remove('show');
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '저장 중...';
+
+    const payload = {
+      formType:   'program_info',
+      timestamp:  new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+      realname:   realname,
+      nickname:   nickname,
+      motivation: motivation
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      document.getElementById('formArea').style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+
+    } catch (e) {
+      console.error(e);
+      btn.disabled = false;
+      btn.textContent = '마음여행을 시작합니다';
+      errorEl.textContent = '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+      errorEl.classList.add('show');
+    }
+  }
+</script>
+
+</body>
+</html>
